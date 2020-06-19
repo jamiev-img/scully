@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'fs';
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import createProxyMiddleware from 'http-proxy-middleware';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
 import { scullyConfig } from '../config';
