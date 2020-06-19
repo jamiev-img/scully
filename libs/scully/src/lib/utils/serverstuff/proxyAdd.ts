@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'fs';
+import { existsSync } from 'fs';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
@@ -28,7 +28,7 @@ function loadProxyConfig():
   const proxyPath = join(scullyConfig.homeFolder, configFile);
   if (existsSync(proxyPath)) {
     try {
-      return setupProxyFeature(JSON.parse(readFileSync(proxyPath, 'utf-8')));
+      return setupProxyFeature(require(proxyPath));
     } catch {
       logError(`
 Error while reading proxy config file "${yellow(proxyPath)}"
